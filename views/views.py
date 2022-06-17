@@ -23,10 +23,10 @@ def articleListView(request):
 def articleView(request, slug):
     
     article = get_object_or_404(Article, slug = slug) 
-    navbar = Navbar.objects.first() 
+    
     context = {
         'article'  : article,       
-        'navbar'   : navbar, 
+         
         }
 
     return render(request, 'article.html', context)
