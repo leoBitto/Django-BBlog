@@ -3,14 +3,6 @@ from django.views.generic.list import ListView
 from ..models.article import Article
 
 
-# class articleListView(ListView):
-#     model = Article
-#     pagination = 20
-#     template_name = 'article_list.html'
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['navbar'] = Navbar.objects.first()
-#         return context
 def articleListView(request):
     articles = Article.objects.all()
 

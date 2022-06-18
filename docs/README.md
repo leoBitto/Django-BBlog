@@ -13,7 +13,7 @@ it uses Quill `https://quilljs.com/` and Django 4.0 .
     ```
     INSTALLED_APPS - [
         ...
-        'django-BBlog.apps.BblogConfig',
+        'django_BBlog.apps.BblogConfig',
         'django_quill',
     ]
     ```
