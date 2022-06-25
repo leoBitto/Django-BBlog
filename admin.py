@@ -1,6 +1,26 @@
 from django.contrib import admin
 from .models.article import Article
-from .models.categories import Category
+from .models.categories import *
+
+
+class TopicAdmin(admin.TabularInline):
+    model = Topic
+
+
+class SubtopicAdmin(admin.TabularInline):
+    model = Subtopic
+
+
+class CategoryAdmin(admin.TabularInline):
+    model = Category
+
+
+class SubcategoryAdmin(admin.TabularInline):
+    model = Subcategory
+
+
+class ArgumentAdmin(admin.TabularInline):
+    model = Argument
 
 
 
@@ -43,26 +63,18 @@ class ArticleAdmin(admin.ModelAdmin):
         
     )
     prepopulated_fields = {"slug": ("title",)}
+    inlines = [
+        TopicAdmin,
+        SubtopicAdmin,
+        CategoryAdmin,
+        SubcategoryAdmin,
+        ArgumentAdmin,
 
- 
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = [
-        'category'
     ]
-    fieldsets = (
-        ('Content',
-            {
-            'fields':(
-                'category',
-                ),
-            'classes':(
-                'wide',
-                'extrapretty',
-                ),
-            }
-            ),   
-    )
 
-admin.site.register(Category, CategoryAdmin)
+
+
+
+
+
 admin.site.register(Article, ArticleAdmin)
