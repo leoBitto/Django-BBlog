@@ -37,7 +37,7 @@ it refer to a general topic so it can be filtered.
 ############################################################
 ############################################################
 from django.db import models
-from .categories import Category
+from .categories import *
 from django_quill.fields import QuillField
 
 class Article(models.Model):
@@ -56,7 +56,19 @@ class Article(models.Model):
         auto_now=True,
         )
     topic = models.ManyToManyField(
+        Topic,
+    )
+    sub_topic = models.ManyToManyField(
+        Subtopic,
+    )
+    category = models.ManyToManyField(
         Category,
+    )
+    sub_category = models.ManyToManyField(
+        Subcategory,
+    )
+    argument = models.ManyToManyField(
+        Argument,
     )
     # every page is pointed by an url that must be set 
     # in the url patterns when the object is saved
