@@ -55,21 +55,23 @@ class Article(models.Model):
     date_updated = models.DateTimeField(
         auto_now=True,
         )
-    topic = models.ManyToManyField(
-        Topic,
+
+    topic = models.ForeignKey(
+        Topic, models.SET_NULL, blank=True, null=True
     )
-    sub_topic = models.ManyToManyField(
-        Subtopic,
+    sub_topic = models.ForeignKey(
+        Subtopic, models.SET_NULL, blank=True, null=True
     )
-    category = models.ManyToManyField(
-        Category,
+    category = models.ForeignKey(
+        Category, models.SET_NULL, blank=True, null=True
     )
-    sub_category = models.ManyToManyField(
-        Subcategory,
+    sub_category = models.ForeignKey(
+        Subcategory, models.SET_NULL, blank=True, null=True
     )
-    argument = models.ManyToManyField(
-        Argument,
+    argument = models.ForeignKey(
+        Argument, models.SET_NULL, blank=True, null=True
     )
+    
     # every page is pointed by an url that must be set 
     # in the url patterns when the object is saved
     # the url setted is:

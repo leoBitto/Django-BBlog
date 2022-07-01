@@ -3,27 +3,6 @@ from .models.article import Article
 from .models.categories import *
 
 
-class TopicAdmin(admin.TabularInline):
-    model = Topic
-
-
-class SubtopicAdmin(admin.TabularInline):
-    model = Subtopic
-
-
-class CategoryAdmin(admin.TabularInline):
-    model = Category
-
-
-class SubcategoryAdmin(admin.TabularInline):
-    model = Subcategory
-
-
-class ArgumentAdmin(admin.TabularInline):
-    model = Argument
-
-
-
 class ArticleAdmin(admin.ModelAdmin):
    
     list_display = (
@@ -53,6 +32,10 @@ class ArticleAdmin(admin.ModelAdmin):
                 'slug',
                 'author',
                 'topic',
+                'sub_topic',
+                'category',
+                'sub_category',
+                'argument',
                 ),
             'classes':(
                 #'wide',
@@ -63,18 +46,12 @@ class ArticleAdmin(admin.ModelAdmin):
         
     )
     prepopulated_fields = {"slug": ("title",)}
-    inlines = [
-        TopicAdmin,
-        SubtopicAdmin,
-        CategoryAdmin,
-        SubcategoryAdmin,
-        ArgumentAdmin,
-
-    ]
-
-
-
-
+    
 
 
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Topic)
+admin.site.register(Subtopic)
+admin.site.register(Category)
+admin.site.register(Subcategory)
+admin.site.register(Argument)
