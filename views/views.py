@@ -1,15 +1,14 @@
 from django.shortcuts import get_object_or_404, render
-from django.views.generic.list import ListView
 from ..models.article import Article
 
 
 def articleListView(request):
-    articles = Article.objects.all()
+    articles = Article.objects.filter(status="published")
 
     context = {
         'articles': articles,
     }     
-    return render(request, 'article_list.html', context)
+    return render(request, 'BBlog/article_list.html', context)
 
 
 def articleView(request, slug):
@@ -21,4 +20,4 @@ def articleView(request, slug):
          
         }
 
-    return render(request, 'article.html', context)
+    return render(request, 'BBlog/article.html', context)

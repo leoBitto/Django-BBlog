@@ -6,6 +6,6 @@ from .views import views
 app_name = 'BBlog'
 urlpatterns = [
 
-    path('articles', views.articleListView, name="articles"),
-    path('articles/<slug:slug>', views.articleView, name='article'),
+    path('', views.articleListView, name="articles"),
+    path('<slug:slug>', views.articleView, name='article'),
 ]

@@ -1,0 +1,17 @@
+{% extends "BBlog/base.html" %}
+{% block content %} 
+        <h1 class="h1 m-5 text-center">Articles</h1>
+        <ul class="list-group list-group-flush container-fluid mx-5 p-3">
+        {% for article in articles %}
+            
+            <a href="{% url 'BBlog:article' slug=article.slug  %}" class="list-group-item list-group-item-action" aria-current="true">
+                <h5 class="mb-1">{{ article.title }}</h5>
+                <small>{{ article.date_created}}</small>
+            </a>
+        
+        {% empty %}
+            <li>No articles yet.</li>
+        {% endfor %}
+        </ul>
+        
+{% endblock %} 

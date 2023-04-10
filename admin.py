@@ -10,7 +10,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'author',
         'date_created',
         'date_updated',
-        
+        'status',
     )
     
     fieldsets = (
@@ -36,6 +36,7 @@ class ArticleAdmin(admin.ModelAdmin):
                 'category',
                 'sub_category',
                 'argument',
+                'status',
                 ),
             'classes':(
                 #'wide',

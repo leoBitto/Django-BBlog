@@ -2,18 +2,19 @@
 # BBlog
 
 BBlog is a Django app to organize articles in a website.
-it uses Quill `https://quilljs.com/` and Django 4.0 . 
+it uses Quill `https://quilljs.com/` and Django 4.2 . 
 -----------
 
 ## Quick start
-
+0. after cloning the repo inside the Django project rename the folder containing 
+    this app eliminating the name django_
 
 1. Add "BBlog" to your setting like this::
 
     ```
     INSTALLED_APPS - [
         ...
-        'django_BBlog.apps.BblogConfig',
+        'BBlog.apps.BblogConfig',
         'django_quill',
     ]
     ```
@@ -28,10 +29,11 @@ it uses Quill `https://quilljs.com/` and Django 4.0 .
     ```
 
 2. Include the BBlog URLconf in your project urls.py like this::
+you may want to add some url path inside the ''
 
     > path('', include(('BBlog.urls', 'BBlog'), namespace="BBlog")),
 
-3. Run ``python manage.py migrate`` to create the BBlog models.
+3. Run ``python manage.py migrate BBlog`` to create the BBlog models.
 
 4. Start the development server and visit http://127.0.0.1:8000/admin/
    to create the models (you'll need the Admin app enabled).
@@ -42,4 +44,11 @@ it uses Quill `https://quilljs.com/` and Django 4.0 .
 -----------
 
 # BBlog docs                       
+if you want to use the article links outside the app you need to use the namespace.
+it is always a good idea when having many apps inside a Django project to use the namespace.
+for example:
 
+    > <a href="{% url 'BBlog:article' slug=article.slug  %}"</a>
+
+
+the article list require you to have a base.html file inside a folder call website to be working

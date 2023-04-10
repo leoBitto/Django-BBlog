@@ -42,6 +42,12 @@ from django_quill.fields import QuillField
 
 class Article(models.Model):
 
+
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+
     # Meta
     author = models.CharField(
         max_length=10,
@@ -87,6 +93,8 @@ class Article(models.Model):
     )
     paragraphs = QuillField(default=None)
        
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
     
     def __str__(self):
         return self.title
