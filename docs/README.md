@@ -35,6 +35,9 @@ you may want to add some url path inside the ''
 
 3. Run ``python manage.py migrate BBlog`` to create the BBlog models.
 
+4. the base.html template need a footer and a navbar that can be integrated
+    from other apps
+
 4. Start the development server and visit http://127.0.0.1:8000/admin/
    to create the models (you'll need the Admin app enabled).
 
@@ -50,5 +53,3 @@ for example:
 
     > <a href="{% url 'BBlog:article' slug=article.slug  %}"</a>
 
-
-the article list require you to have a base.html file inside a folder call website to be working
