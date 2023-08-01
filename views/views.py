@@ -12,12 +12,10 @@ def articleListView(request):
 
 
 def articleView(request, slug):
-    
     article = get_object_or_404(Article, slug = slug) 
     
     context = {
         'article'  : article,       
-         
         }
 
     return render(request, 'BBlog/article.html', context)
